@@ -1,0 +1,17 @@
+Demographic Filtering -
+Before getting started with this -
+
+we need a metric to score or rate movie
+Calculate the score for every movie
+Sort the scores and recommend the best rated movie to the users.
+We can use the average ratings of the movie as the score but using this won't be fair enough since a movie with 8.9 average rating and only 3 votes cannot be considered better than the movie with 7.8 as as average rating but 40 votes. So, I'll be using IMDB's weighted rating (wr) which is given as :-
+
+where, Weighted Rating(WR) = (v/(v+m)).R + (m/(v+m)).C
+
+v is the number of votes for the movie;
+m is the minimum votes required to be listed in the chart;
+R is the average rating of the movie; And
+C is the mean vote across the whole report
+We already have v(vote_count) and R (vote_average) and C can be calculated as
+C= df2['vote_average'].mean()
+Hurray! We have made our first recommender. Under the Trending Now tab of these systems we find movies that are very popular and they can just be obtained by sorting the dataset by the popularity column.
